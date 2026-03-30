@@ -1,2 +1,3 @@
-# SIMON_SAYS-_GAME
-🎮 A web-based Simon Says memory game developed using HTML, CSS, and JavaScript. This project demonstrates DOM manipulation, event handling, and game logic. Players repeat color sequences to progress through levels and improve their memory skills. 🧠✨
+Simon Says is a fun memory-based game where players must repeat an increasing sequence of colors shown by the system. Each round, the game adds a new color to the pattern, and the player must remember and click the colors in the correct order. As the sequence grows longer, the challenge increases, testing the player’s memory, concentration, and reaction speed.
+
+This game is built using HTML, CSS, and JavaScript, demonstrating concepts like DOM manipulation, event handling, and game logic. The colorful interface and interactive gameplay make it both entertaining and a great way to practice front-end development skills. ✨
