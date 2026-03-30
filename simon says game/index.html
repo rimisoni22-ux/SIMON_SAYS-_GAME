@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Simon Says Game</title>
+  <link rel="stylesheet" href="style.css"> 
+</head>
+<body>
+  <nav class="navbar">
+    <a href="#" class="nav-brand" onclick="showPage('landing')">🎵Simon Says</a>
+    <div class="nav-links">
+      <a href="#" onclick="showPage('about')">About</a>
+      <a href="#" onclick="showPage('how-to-play')">How to Play</a>
+      <a href="#" onclick="showPage('game')">Play Game</a>
+      <a href="#" onclick="showPage('results')">Leaderboard</a>
+      <a href="#" onclick="showPage('guest-login')" class="user-info" id="user-display">Guest</a> 
+    </div>
+  </nav>
+
+  <div class="page-container">
+    
+    <div id="landing-page" class="page active-page">
+      <div class="landing-content">
+        <h1 class="shimmer">Welcome to Simon Says!🎮</h1>
+        <p>Test your memory and see how far you can go.</p>
+        <button id="start-game-btn">Start Game</button>
+      </div>
+    </div>
+
+    <div id="about-page" class="page">
+      <div class="content-section">
+        <h2>ℹ️ About Simon Says</h2>
+        <p>This is a modern web implementation of the classic electronic memory game, **Simon**. The goal is simple: repeat the sequence of flashing colors and sounds exactly as the game presents them.</p>
+        <p>Each successful round adds another step to the sequence, testing your short-term auditory and visual memory to the limit.</p>
+        <p>Built using **HTML, CSS, and JavaScript** for a fun, responsive experience!</p>
+      </div>
+    </div>
+
+    <div id="how-to-play-page" class="page">
+        <div class="content-section">
+            <h2>🧠 How to Play</h2>
+            <p>Ready to challenge your memory? Follow these steps:</p>
+            <ul>
+                <li>**Start:** Select a mode and click **"Start Game"** or press a key.</li>
+                <li>**Watch:** The game will flash one of the four color buttons and play a corresponding sound.</li>
+                <li>**Repeat:** Click the same color button that just flashed.</li>
+                <li>**Advance:** If correct, the game will flash the original pattern *plus* one new color.</li>
+                <li>**Goal:** Continue repeating the increasingly longer sequence until you make a mistake.</li>
+                <li>**Game Over:** If you click the wrong button, the game ends, and your score will be added to the Leaderboard!</li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="guest-login-page" class="page">
+        <div class="content-section">
+            <h2>🔐 Player Login / ID</h2>
+            <p id="current-player-status">You are currently playing as: **Guest**</p>
+            <p id="current-player-id">Player ID: **000**</p>
+            
+            <div class="login-form">
+                <label for="username-input">Username</label>
+                <input type="text" id="username-input" placeholder="Enter your desired player name">
+                
+                <label for="password-input">Player ID (Not saved)</label>
+                <input type="password" id="password-input" placeholder="Enter a custom 3-digit ID (e.g., 123)">
+
+                <button id="set-username-btn">Set Name and ID</button>
+            </div>
+            <p style="margin-top: 20px; font-size: 0.9em; color: #aaa;">Note: This is a front-end game. The ID/Password fields are for display only and are not securely authenticated or stored.</p>
+        </div>
+    </div>
+
+    <div id="game-page" class="page">
+      <h2 id="level-title">Select Mode to Play</h2>
+      
+      <div class="scorecard">
+        <h3>Current Score</h3>
+        <span id="score">0</span>
+      </div>
+
+      <div class="controls mode-select">
+          <button id="normal-mode-btn" class="active-mode-btn">⭐ Normal</button>
+          <button id="zen-mode-btn">💨 Zen</button>
+          <button id="turbo-mode-btn">⚡ Turbo</button>
+          <button id="reverse-mode-btn">🔄 Reverse</button>
+      </div>
+
+      <div class="controls">
+        <button id="start-game-btn">▶️ Start Game</button>
+        <button id="sound-toggle">🔊 Sound: ON</button>
+        <button id="restart-btn">🔁 Reset Game</button>
+      </div>
+
+      <div class="btn-container">
+        <div class="line">
+          <div class="btn red" id="red"></div>
+          <div class="btn yellow" id="yellow"></div>
+        </div>
+        <div class="line">
+          <div class="btn green" id="green"></div>
+          <div class="btn purple" id="purple"></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="results-page" class="page">
+      <h2>🏆 Leaderboard 🏆</h2>
+      <div id="latest-score-display"></div>
+      <ul id="leaderboard-list">
+        </ul>
+      <button onclick="showPage('landing')">Back to Home</button>
+    </div>
+  </div>
+
+  <script src="app.js"></script> 
+</body>
+</html>

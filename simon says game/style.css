@@ -1,0 +1,473 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #000000, #1a1a2e);
+    color: #fff;
+    min-height: 100vh;
+    overflow-x: hidden; 
+    padding-top: 60px;
+    transition: background-color 0.3s ease-in-out; 
+}
+
+/* Game Over effect */
+body.game-over {
+    background-color: #ff3366 !important; 
+}
+
+/* Success Flash effect */
+body.success-flash {
+    background-color: #00ff7f !important; 
+}
+
+
+/* --- Navbar Styling --- */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    background: rgba(0, 0, 0, 0.8); 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    z-index: 1000;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+.nav-brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #00ffff; 
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.nav-links a {
+    color: #fff;
+    text-decoration: none;
+    margin-left: 20px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+.nav-links a:hover {
+    background: rgba(0, 255, 255, 0.1);
+}
+
+.user-info {
+    color: #ffcc00;
+    margin-left: 20px;
+}
+
+/* --- Page Management --- */
+.page-container {
+    text-align: center;
+    padding: 20px;
+}
+
+.page {
+    display: none; 
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    min-height: calc(100vh - 80px); 
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.active-page {
+    display: flex;
+    opacity: 1;
+}
+
+/* --- Content Pages Styling (About, How to Play, Guest) --- */
+.content-section {
+    margin-top: 50px;
+    max-width: 700px; 
+    width: 90%;
+    text-align: left;
+    padding: 30px; 
+    background: rgba(255, 255, 255, 0.08); 
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.1); 
+    animation: fadeIn 1s ease-out;
+    border: 1px solid rgba(0, 255, 255, 0.2);
+}
+
+.content-section h2 {
+    color: #00ffff; 
+    margin-bottom: 25px;
+    font-size: 2rem; 
+    text-align: center;
+    text-shadow: 0 0 5px #00ffff;
+}
+
+.content-section p, .content-section li {
+    margin-bottom: 18px;
+    line-height: 1.7;
+    color: #e0e0e0;
+    font-size: 1.1rem; 
+}
+
+.content-section ul {
+    list-style: none;
+    padding-left: 0;
+    margin-top: 15px;
+}
+
+.content-section ul li {
+    background: rgba(0, 0, 0, 0.2); 
+    padding: 10px;
+    border-radius: 6px;
+    margin-bottom: 10px;
+    transition: transform 0.2s;
+}
+
+.content-section ul li:before {
+    content: '★'; 
+    margin-right: 15px;
+    color: #00ff7f; 
+    font-weight: bold;
+}
+
+.content-section ul li:hover {
+    transform: translateX(5px);
+    background: rgba(0, 0, 0, 0.3);
+}
+
+/* Login Form Styles */
+.login-form label {
+    display: block;
+    margin-top: 15px;
+    font-weight: bold;
+    color: #fff;
+}
+
+.login-form input[type="text"],
+.login-form input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0 10px 0;
+    border: 1px solid #00ffff; 
+    border-radius: 5px;
+    background: #0d1117;
+    color: #fff;
+    font-size: 1rem;
+    box-sizing: border-box; 
+}
+
+.login-form button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 20px;
+    background: #00ffff; 
+    color: #1a1a2e; 
+    font-weight: bold;
+}
+
+.login-form button:hover {
+    background: #00e5e5;
+}
+
+/* --- Landing Page Styling --- */
+.landing-content {
+    margin-top: 100px;
+    animation: fadeIn 1s ease-out;
+}
+
+.landing-content h1 {
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+}
+
+#start-game-btn {
+    font-size: 1.2rem;
+    padding: 15px 30px;
+    margin-top: 30px;
+    background: #00ff7f; 
+    color: #000;
+}
+
+#start-game-btn:hover {
+    background: #00e66b;
+}
+
+/* --- Game Page Styling --- */
+#game-page h2 {
+    margin-top: 20px;
+    font-weight: 500;
+}
+
+.scorecard {
+    margin: 20px auto;
+    padding: 10px 20px;
+    border: 2px solid #00ffff;
+    border-radius: 10px;
+    width: 100px;
+    background: rgba(0, 255, 255, 0.1);
+    animation: pulse 1.5s infinite alternate;
+}
+
+.scorecard span {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #ffcc00;
+}
+
+.controls {
+    margin: 15px 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.mode-select button {
+    background: #333; 
+    color: #fff;
+    border: 1px solid #00ffff;
+    transition: all 0.2s;
+}
+
+.mode-select button.active-mode-btn {
+    background: #00ffff;
+    color: #1a1a2e;
+    transform: scale(1.05);
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+}
+
+button {
+    background: #00ffff;
+    color: #1a1a2e;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.3s, transform 0.1s;
+    margin: 5px;
+}
+
+button:hover {
+    background: #00e5e5;
+    transform: translateY(-2px);
+}
+button[disabled]:not(.active-mode-btn) {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.btn-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.line {
+    display: flex;
+}
+
+.btn {
+    height: 120px;
+    width: 120px;
+    margin: 10px;
+    border-radius: 15px;
+    cursor: pointer;
+    opacity: 0.9;
+    transition: transform 0.2s, opacity 0.2s;
+}
+
+/* Button Colors */
+.red {
+    background-color: #ff3366;
+}
+
+.yellow {
+    background-color: #ffcc00;
+}
+
+.green {
+    background-color: #00ff7f;
+}
+
+.purple {
+    background-color: #9933ff;
+}
+
+/* User Click Animation */
+.btn:active,
+.active {
+    opacity: 1;
+    transform: scale(1.1);
+    box-shadow: 0 0 25px #fff;
+}
+
+/* Computer Flash Animation */
+.flash {
+    opacity: 1;
+    transform: scale(1.15); 
+    box-shadow: 0 0 35px #fff, 0 0 15px #ffcc00;
+    border: 3px solid #fff;
+}
+
+/* --- Results Page Styling (Leaderboard) --- */
+#results-page h2 {
+    margin-top: 40px;
+    color: #00ffff;
+    font-size: 2.5rem;
+    text-shadow: 0 0 8px #00ffff;
+}
+
+#latest-score-display {
+    font-size: 1.3rem;
+    margin: 20px 0;
+    padding: 12px;
+    background: rgba(0, 255, 255, 0.1);
+    border-radius: 8px;
+    border: 1px dashed #00ffff;
+}
+
+#leaderboard-list {
+    list-style: none;
+    width: 90%;
+    max-width: 600px; 
+    margin: 30px auto;
+    text-align: left;
+    padding: 0;
+    border-radius: 10px;
+    overflow: hidden; 
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+}
+
+/* Leaderboard Header */
+#leaderboard-list li:first-child {
+    background: #00ffff; 
+    color: #1a1a2e; 
+    font-weight: 700;
+    padding: 15px 10px;
+    font-size: 1.1rem;
+    text-shadow: none;
+}
+
+/* Leaderboard Rows */
+#leaderboard-list li {
+    padding: 12px 10px;
+    display: flex;
+    justify-content: space-between;
+    animation: slideInLeft 0.5s ease-out forwards;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Alternating Row Colors for contrast */
+#leaderboard-list li:nth-child(even):not(:first-child) {
+    background: rgba(0, 0, 0, 0.3); 
+}
+
+#leaderboard-list li:nth-child(odd):not(:first-child) {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+#leaderboard-list li span:nth-child(1) {
+    font-weight: bold;
+    color: #ffcc00;
+    width: 10%;
+}
+
+#leaderboard-list li span:nth-child(2) {
+    width: 30%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+#leaderboard-list li span:nth-child(3) {
+    width: 15%;
+    color: #00ff7f;
+}
+#leaderboard-list li span:nth-child(4) {
+    width: 20%;
+    font-weight: bold;
+}
+#leaderboard-list li span:nth-child(5) {
+    width: 15%;
+}
+
+
+/* --- Animations --- */
+@keyframes shimmer {
+    0% { text-shadow: 0 0 5px rgba(255, 255, 255, 0.5); }
+    50% { text-shadow: 0 0 15px rgba(0, 255, 255, 1); }
+    100% { text-shadow: 0 0 5px rgba(255, 255, 255, 0.5); }
+}
+
+.shimmer {
+    animation: shimmer 3s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); box-shadow: 0 0 10px #00ffff; }
+    100% { transform: scale(1.03); box-shadow: 0 0 20px #00ffff; }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideInLeft {
+    from { opacity: 0; transform: translateX(-20px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+/* --- Media Query --- */
+@media (max-width: 600px) {
+    .btn {
+        width: 90px;
+        height: 90px;
+    }
+    .landing-content h1 {
+        font-size: 2.5rem;
+    }
+    .navbar {
+        flex-direction: column;
+        height: auto;
+    }
+    .nav-links {
+        display: flex;
+        justify-content: space-around;
+        width: 100%;
+        padding-bottom: 10px;
+    }
+    .nav-links a, .user-info {
+        margin: 0 5px;
+    }
+    body {
+        padding-top: 100px;
+    }
+
+    /* Adjust leaderboard column widths for small screens */
+    #leaderboard-list li span:nth-child(1) { width: 15%; }
+    #leaderboard-list li span:nth-child(2) { width: 35%; }
+    #leaderboard-list li span:nth-child(3) { display: none; } 
+    #leaderboard-list li span:nth-child(4) { width: 30%; }
+    #leaderboard-list li span:nth-child(5) { width: 20%; }
+
+    #leaderboard-list li:first-child span:nth-child(3) { display: none; }
+    
+    .mode-select button {
+        font-size: 0.75rem;
+        padding: 8px;
+    }
+}
+h3{
+    font-size: 12px;
+}
